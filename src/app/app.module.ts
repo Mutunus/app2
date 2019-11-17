@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { CoreModule } from './services/core.module'
+import { AgmCoreModule } from '@agm/core';
 
 registerLocaleData(en);
 
@@ -26,7 +27,10 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA3lEmTq3WuoXDAktzAqAqO3KRpyh97g3k'
+    })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

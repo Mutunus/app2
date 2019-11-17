@@ -1,0 +1,33 @@
+<p>map works!</p>
+<agm-map 
+    [disableDefaultUI]="true"
+    [fullscreenControl]="true"
+    [latitude]="lat" 
+    [longitude]="lng" 
+    [maxZoom]="15"
+    [minZoom]="6"
+    [mapTypeId]="mapType"
+    [styles]="styles"
+    [scaleControl]=true
+
+    (zoomChange)="onZoomChange($event)"
+    (mapClick)="onMapClick($event)">
+    
+    <agm-marker
+        *ngFor="let marker of markers"
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [opacity]="marker.alpha"
+        [markerDraggable]="true"
+        (markerClick)="selectMarker($event)"
+      >
+      </agm-marker>
+
+    <!-- <agm-rectangle
+        [north]="max('lat')"
+        [east]="max('lng')"
+        [south]="min('lat')"
+        [west]="min('lng')"
+      >
+    </agm-rectangle> -->
+</agm-map>

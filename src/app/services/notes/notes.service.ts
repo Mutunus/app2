@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { apiUrl } from 'src/environments/environment';
 
 @Injectable()
 export class NotesService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  getNotes() {
-    // TODO - get all notes from db
-  }
+  getNotes = (userId: string) => this.http.get(`${apiUrl}/notes/${userId}`)
+  
 
   saveNote() {
     // TODO - save note to db

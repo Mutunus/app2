@@ -1,4 +1,27 @@
 <button (click)="createNote()">Create note</button>
-<button (click)="readNote()">Read Note</button>
 
 <p>{{ text }}</p>
+
+<nz-list
+    [nzDataSource]="notes$ | async"
+    nzBordered
+    nzSize="small"
+    [nzHeader]="'Header'"
+    [nzFooter]="'Footer'"
+    [nzRenderItem]="note"
+    nzItemLayout='vertical'
+>
+    <ng-template #note let-item>
+        <nz-list-item 
+            [nzExtra]="readNoteTemp"
+            [nzContent]="item.note">
+            <ng-template #readNoteTemp>
+                <button nz-button nzType="default" (click)="readNote(item.note)">Read Note</button>
+            </ng-template>
+        </nz-list-item>
+    </ng-template>
+
+    
+    
+   
+</nz-list>
